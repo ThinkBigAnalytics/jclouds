@@ -274,7 +274,10 @@ public class S3BlobStore extends BaseBlobStore {
             options.withAcl(CannedAccessPolicy.PUBLIC_READ);
       } catch (CacheLoader.InvalidCacheLoadException e) {
          // nulls not permitted from cache loader
+      } catch (com.google.common.util.concurrent.UncheckedExecutionException e1) {
+         System.out.println("igor got to the Autorization exception");
       }
+       System.out.println("igor got to exectuting putBlob");
       return sync.putObject(container, blob2Object.apply(blob), options);
    }
 
