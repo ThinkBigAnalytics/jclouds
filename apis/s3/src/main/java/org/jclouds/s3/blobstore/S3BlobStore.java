@@ -268,6 +268,7 @@ public class S3BlobStore extends BaseBlobStore {
 
       // TODO: Make use of options overrides
       PutObjectOptions options = new PutObjectOptions();
+      options.withServerSideEncryption();
       try {
          AccessControlList acl = bucketAcls.getUnchecked(container);
          if (acl != null && acl.hasPermission(GroupGranteeURI.ALL_USERS, Permission.READ))

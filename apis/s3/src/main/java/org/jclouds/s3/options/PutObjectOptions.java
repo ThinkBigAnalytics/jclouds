@@ -82,6 +82,11 @@ public class PutObjectOptions extends BaseHttpRequestOptions {
          this.replaceHeader(CANNED_ACL, acl.toString());
       return this;
    }
+   
+   public PutObjectOptions withServerSideEncryption() {
+       this.replaceHeader("x-amz-server-side-encryption", "AES256");
+       return this;
+   }
 
    /**
     * @see PutObjectOptions#withAcl(CannedAccessPolicy)
