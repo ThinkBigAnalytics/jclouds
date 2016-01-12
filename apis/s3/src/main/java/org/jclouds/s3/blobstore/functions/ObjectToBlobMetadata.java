@@ -59,6 +59,8 @@ public class ObjectToBlobMetadata implements Function<ObjectMetadata, MutableBlo
             to.setPublicUri(from.getUri());
       } catch (CacheLoader.InvalidCacheLoadException e) {
          // nulls not permitted from cache loader
+      } catch (com.google.common.util.concurrent.UncheckedExecutionException e1) {
+         // getting ACL exceptio is OK.  user might still have access to do get/put.
       }
       to.setUri(from.getUri());
       to.setContainer(from.getBucket());
